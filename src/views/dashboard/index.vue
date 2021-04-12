@@ -1,18 +1,26 @@
 <template>
   <div class="dashboard-container">
     <div class="dashboard-text">name: {{ name }}</div>
+    <div @click="test">test</div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-
+import { index } from '@/api/test'
 export default {
   name: 'Dashboard',
   computed: {
     ...mapGetters([
       'name'
     ])
+  },
+  methods:{
+    test(){
+      index().then( res=> {
+        console.log(res)
+      })
+    }
   }
 }
 </script>

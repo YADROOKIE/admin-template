@@ -54,7 +54,27 @@ export const constantRoutes = [
       meta: { title: 'Dashboard', icon: 'dashboard' }
     }]
   },
-
+  {
+    path: '/certify',
+    component: Layout,
+    redirect: '/share/table',
+    name: '用户管理',
+    meta: { title: '用户管理', icon: 'el-icon-user' },
+    children: [
+      {
+        path: 'table',
+        name: '实名认证',
+        component: () => import('@/views/certify/index'),
+        meta: { title: '待处理的认证请求', icon: 'table' }
+      },
+      {
+        path: 'tree',
+        name: '用户列表',
+        component: () => import('@/views/tree/index'),
+        meta: { title: '用户列表', icon: 'tree' }
+      }
+    ]
+  },
   {
     path: '/example',
     component: Layout,

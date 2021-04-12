@@ -36,8 +36,15 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    before: require('./mock/mock-server.js')
+    proxy:{
+      '/share': {
+        target: `http://localhost:8080/`, // 这个链接是要代理到的api地址
+        changeOrigin: true
+      }
+    },
+    // before: require('./mock/mock-server.js')
   },
+
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
